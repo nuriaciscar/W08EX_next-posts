@@ -1,10 +1,12 @@
+import Post from "@/components/Pos/Post";
+
 const postsSSG = ({ posts }) => (
   <>
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>{post.body}</li>
-      ))}
-    </ul>
+    <h1>SSGPage</h1>
+
+    {posts.map((post) => (
+      <Post key={post.id} post={post} />
+    ))}
   </>
 );
 

@@ -1,8 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Form = () => {
-  const [data, setData] = useState();
+  const router = useRouter();
+  const initialData = {
+    title: "",
+    body: "",
+  };
+
+  const [data, setData] = useState(initialData);
 
   const changeData = (event) => {
     setData({
@@ -11,17 +18,35 @@ const Form = () => {
     });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    axios.get("https://isdi-blog-posts-api.herokuapp.com/posts", data);
+    await axios.post("https://isdi-blog-posts-api.herokuapp.com/posts", data);
+    router.push("/");
   };
+
+  //   const navigate = useNavigate();
+
+  //   const [registered, setIsRegistered] = useState(false);
+
+  //  useEffect(() => {
+  //    user.isAuthenticated ? navigate("/home") : navigate("/login");
+  //  }, [navigate, user]);
+
   return (
-    <Form autocomplete="off" noValidate>
-      <input type="text" onChange={changeData} placeholder="title"></input>
-      <input type="text-area" onChange={changeData} placeholder="Body"></input>
-      <button type="submit" onSubmit={onSubmit}>
-        Create
-      </button>
+    <Form autocomplete="off" noValidate onSubmit={onSubmit}>
+      <input
+        type="text"
+        onChange={changeData}
+        placeholder="title"
+        value={data.title}
+      ></input>
+      <input
+        type="text-area"
+        onChange={changeData}
+        placeholder="Body"
+        value={data.body}
+      ></input>
+      <button type="submit">Create</button>
     </Form>
   );
 };
