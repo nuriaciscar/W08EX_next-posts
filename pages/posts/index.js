@@ -1,4 +1,9 @@
 const Posts = ({ posts }) => (
+
+
+
+return(
+
   <ul>
     {posts.map((post) => (
       <li key={post.id}>
@@ -10,9 +15,11 @@ const Posts = ({ posts }) => (
           height={100}
           width={100}
         ></img>
+        <button onClick={deletePost}>DELETE</button>
       </li>
     ))}
   </ul>
+  )
 );
 
 export default Posts;
@@ -27,3 +34,8 @@ export const getServerSideProps = async () => {
     props: { posts },
   };
 };
+
+  export const deletePost = async (id) => {
+const response = await axios.delete("https://isdi-blog-posts-api.herokuapp.com/posts");
+
+  }
