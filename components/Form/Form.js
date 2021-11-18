@@ -24,14 +24,6 @@ const Form = () => {
     router.push("/");
   };
 
-  //   const navigate = useNavigate();
-
-  //   const [registered, setIsRegistered] = useState(false);
-
-  //  useEffect(() => {
-  //    user.isAuthenticated ? navigate("/home") : navigate("/login");
-  //  }, [navigate, user]);
-
   return (
     <Form autocomplete="off" noValidate onSubmit={onSubmit}>
       <input
