@@ -6,8 +6,7 @@ import Header from "@/components/Header/Header";
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
-  const [user, setUser] = useState();
-  const [isThereUser, setIsThereUser] = useState(null);
+  const [isThereUser, setIsThereUser] = useState(false);
 
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem("user"));
@@ -17,15 +16,12 @@ export default function MyApp({ Component, pageProps }) {
     } else {
       setIsThereUser(false);
     }
-  }, [user]);
+  }, []);
 
   return (
     <>
       <Header />
-      {isThereUser}? (
-      <Component {...pageProps} />
-      ) : (
-      <Login />)
+      {isThereUser ? <Component {...pageProps} /> : <Login />}
     </>
   );
 }
