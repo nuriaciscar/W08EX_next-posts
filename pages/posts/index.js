@@ -1,7 +1,16 @@
 const Posts = ({ posts }) => (
   <ul>
     {posts.map((post) => (
-      <li key={post.id}>{post.body}</li>
+      <li key={post.id}>
+        {post.body}
+        <p>Created by: {post.userName}</p>
+        <img
+          src={post.userAvatar}
+          alt="Image avatar"
+          height={100}
+          width={100}
+        ></img>
+      </li>
     ))}
   </ul>
 );

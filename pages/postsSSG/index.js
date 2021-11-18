@@ -1,4 +1,4 @@
-import Post from "@/components/Pos/Post";
+import Post from "../../components/Pos/Post";
 
 const postsSSG = ({ posts }) => (
   <>

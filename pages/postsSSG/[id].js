@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-const Post = ({ post }) => {
+const PostBlog = ({ post }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <h2>LOADING... </h2>;
@@ -11,6 +11,7 @@ const Post = ({ post }) => {
     </>
   );
 };
+export default PostBlog;
 export const getStaticPaths = async () => {
   const response = await fetch(
     "https://isdi-blog-posts-api.herokuapp.com/posts"
