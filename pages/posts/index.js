@@ -1,28 +1,35 @@
-const Posts = ({ posts }) => (
 
 
+const Posts = ({ posts }) => {
+// const deletePost = () =>{
+// if (id !== null && user.name===){
+// deletePostFunction({posts.id})
+// }
+// };
 
-return(
-
-  <ul>
+return
+(<ul>
     {posts.map((post) => (
       <li key={post.id}>
-        {post.body}
+        <p>{post.body}</p>
         <p>Created by: {post.userName}</p>
-        <img
+        {/* <img
           src={post.userAvatar}
           alt="Image avatar"
           height={100}
           width={100}
-        ></img>
-        <button onClick={deletePost}>DELETE</button>
+        /> */}
+        
+        <button>DELETE</button>
       </li>
     ))}
-  </ul>
-  )
-);
+  </ul>)
+
+}
 
 export default Posts;
+
+
 
 export const getServerSideProps = async () => {
   const response = await fetch(
@@ -35,7 +42,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-  export const deletePost = async (id) => {
-const response = await axios.delete("https://isdi-blog-posts-api.herokuapp.com/posts");
+//   export const deletePostFunction = async (id) => {
+// const response = await axios.delete(`https://isdi-blog-posts-api.herokuapp.com/posts/${id}`);
 
-  }
+//   }
